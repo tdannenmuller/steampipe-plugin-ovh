@@ -8,42 +8,43 @@ Retrieve forecasted usage and billing information for an OVHcloud Public Cloud p
 ```sql
 select
   project_id,
-  period_start,
-  period_end,
-  total_price,
-  total_price_without_discount,
-  total_hourly_cost,
-  total_monthly_cost
+  total_instances_price,
+  total_storage_price,
+  total_volumes_price,
+  total_snapshots_price
 from
-  ovh_cloud_project_usage_forecast;
+  ovh_cloud_project_usage_forecast
+where project_id = '<your_project_id>';
 ```
 
 ### Forecast by resource type
 ```sql
 select
   project_id,
-  period_start,
-  compute_total_price,
-  storage_total_price,
-  network_total_price,
-  ai_total_price,
-  database_total_price
+  instances_count,
+  total_instances_price,
+  storage_count,
+  total_storage_price,
+  volumes_count,
+  total_volumes_price
 from
-  ovh_cloud_project_usage_forecast;
+  ovh_cloud_project_usage_forecast
+where project_id = '<your_project_id>';
 ```
 
-### Detailed hourly usage breakdown
+### Detailed resource usage breakdown
 ```sql
 select
   project_id,
-  period_start,
-  compute_hourly_usage,
-  storage_hourly_usage,
-  network_hourly_usage,
-  ai_hourly_usage,
-  database_hourly_usage
+  instances_count,
+  volumes_count,
+  storage_count,
+  snapshots_count,
+  total_instances_price,
+  total_storage_price
 from
-  ovh_cloud_project_usage_forecast;
+  ovh_cloud_project_usage_forecast
+where project_id = '<your_project_id>';
 ```
 
 ### Comprehensive cost analysis
